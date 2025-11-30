@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sơ Đồ Tư Duy - IELTS Writing Task 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+        
+        .mindmap {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+        }
+        
+        .center-node {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 50px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            max-width: 500px;
+        }
+        
+        .branches {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .branch {
+            background: #f8f9ff;
+            border-radius: 20px;
+            padding: 30px;
+            border: 3px solid;
+            position: relative;
+        }
+        
+        .branch.objective {
+            border-color: #4facfe;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+        }
+        
+        .branch.subjective {
+            border-color: #43e97b;
+            background: linear-gradient(135deg, #f0fff4 0%, #e6ffe9 100%);
+        }
+        
+        .branch-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .objective .branch-title {
+            color: #0066cc;
+            border-color: #4facfe;
+        }
+        
+        .subjective .branch-title {
+            color: #059669;
+            border-color: #43e97b;
+        }
+        
+        .icon {
+            font-size: 1.2em;
+        }
+        
+        .factors {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .factor {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .factor:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .factor-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        
+        .objective .factor-name {
+            color: #0066cc;
+        }
+        
+        .subjective .factor-name {
+            color: #059669;
+        }
+        
+        .factor-items {
+            font-size: 0.85em;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .factor-items li {
+            margin-left: 15px;
+        }
+        
+        .example-box {
+            background: #fff9e6;
+            border: 3px solid #fbbf24;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 40px;
+        }
+        
+        .example-title {
+            color: #d97706;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .example-content {
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .example-topic {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-style: italic;
+            margin-bottom: 15px;
+            border-left: 4px solid #d97706;
+        }
+        
+        .guide {
+            background: #f3e8ff;
+            border: 3px solid #a78bfa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .guide-title {
+            color: #7c3aed;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .guide-steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        
+        .guide-steps li {
+            counter-increment: step-counter;
+            margin-bottom: 10px;
+            padding-left: 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .guide-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #7c3aed;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .branches {
+                grid-template-columns: 1fr;
+            }
+            
+            .factors {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 SƠ ĐỒ TƯ DUY PHÂN TÍCH TOPIC<br>IELTS WRITING TASK 2</h1>
+        
+        <div class="mindmap">
+            <div class="center-node">
+                📝 IELTS WRITING TASK 2 TOPIC<br>
+                <span style="font-size: 0.7em; font-weight: normal; margin-top: 10px; display: block;">Phân tích theo 2 góc độ</span>
+            </div>
+            
+            <div class="branches">
+                <!-- Objective Factors -->
+                <div class="branch objective">
+                    <div class="branch-title">
+                        <span class="icon">📊</span>
+                        YẾU TỐ KHÁCH QUAN
+                    </div>
+                    <div class="factors">
+                        <div class="factor">
+                            <div class="factor-name">💰 Kinh tế</div>
+                            <div class="factor-items">
+                                • Chi phí, giá cả<br>
+                                • Việc làm, thu nhập<br>
+                                • Tăng trưởng kinh tế
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">👥 Xã hội</div>
+                            <div class="factor-items">
+                                • Cấu trúc gia đình<br>
+                                • Quan hệ cộng đồng<br>
+                                • Bất bình đẳng
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">📚 Giáo dục</div>
+                            <div class="factor-items">
+                                • Chất lượng giáo dục<br>
+                                • Cơ hội học tập<br>
+                                • Kỹ năng năng lực
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">🏥 Sức khỏe</div>
+                            <div class="factor-items">
+                                • Sức khỏe thể chất<br>
+                                • Sức khỏe tinh thần<br>
+                                • Hệ thống y tế
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">🌍 Môi trường</div>
+                            <div class="factor-items">
+                                • Ô nhiễm<br>
+                                • Biến đổi khí hậu<br>
+                                • Tài nguyên thiên nhiên
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">💻 Công nghệ</div>
+                            <div class="factor-items">
+                                • Đổi mới sáng tạo<br>
+                                • Tự động hóa<br>
+                                • Trí tuệ nhân tạo
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">⚖️ Pháp luật</div>
+                            <div class="factor-items">
+                                • Luật pháp, quy định<br>
+                                • Quyền và nghĩa vụ<br>
+                                • Chế tài, hình phạt
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">🏛️ Chính trị</div>
+                            <div class="factor-items">
+                                • Chính sách công<br>
+                                • Vai trò chính phủ<br>
+                                • Quan hệ quốc tế
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subjective Factors -->
+                <div class="branch subjective">
+                    <div class="branch-title">
+                        <span class="icon">💭</span>
+                        YẾU TỐ CHỦ QUAN
+                    </div>
+                    <div class="factors">
+                        <div class="factor">
+                            <div class="factor-name">🧠 Tâm lý</div>
+                            <div class="factor-items">
+                                • Cảm xúc, tâm trạng<br>
+                                • Động lực, động cơ<br>
+                                • Căng thẳng, áp lực
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">💎 Giá trị</div>
+                            <div class="factor-items">
+                                • Đạo đức cá nhân<br>
+                                • Niềm tin, tín ngưỡng<br>
+                                • Ý nghĩa cuộc sống
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">🎭 Văn hóa</div>
+                            <div class="factor-items">
+                                • Truyền thống<br>
+                                • Phong tục tập quán<br>
+                                • Bản sắc văn hóa
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">🙋 Cá nhân</div>
+                            <div class="factor-items">
+                                • Sở thích, đam mê<br>
+                                • Mục tiêu cá nhân<br>
+                                • Lựa chọn lối sống
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">🤝 Quan hệ</div>
+                            <div class="factor-items">
+                                • Quan hệ gia đình<br>
+                                • Tình bạn<br>
+                                • Sự gắn kết cộng đồng
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">🎨 Thẩm mỹ</div>
+                            <div class="factor-items">
+                                • Vẻ đẹp, nghệ thuật<br>
+                                • Sáng tạo<br>
+                                • Trải nghiệm văn hóa
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">✨ Đạo đức</div>
+                            <div class="factor-items">
+                                • Đúng và sai<br>
+                                • Công bằng<br>
+                                • Trách nhiệm
+                            </div>
+                        </div>
+                        
+                        <div class="factor">
+                            <div class="factor-name">👁️ Nhận thức</div>
+                            <div class="factor-items">
+                                • Quan điểm cá nhân<br>
+                                • Định kiến<br>
+                                • Thái độ, niềm tin
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="guide">
+            <div class="guide-title">📋 CÁCH SỬ DỤNG SƠ ĐỒ</div>
+            <ol class="guide-steps">
+                <li>Đọc kỹ đề bài IELTS Writing Task 2</li>
+                <li>Xác định topic thuộc lĩnh vực nào</li>
+                <li>Duyệt qua các yếu tố KHÁCH QUAN và CHỦ QUAN</li>
+                <li>Đánh dấu những yếu tố liên quan đến topic</li>
+                <li>Chọn 2-3 yếu tố mạnh nhất để phát triển thành main ideas</li>
+                <li>Kết hợp yếu tố khách quan + chủ quan để bài viết cân bằng</li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <div class="example-title">💡 VÍ DỤ ÁP DỤNG</div>
+            <div class="example-content">
+                
+                <!-- Example 1 -->
+                <div class="example-topic">
+                    <strong>Topic 1:</strong> "Some people believe that studying at university or college is the best route to a successful career, while others believe that it is better to get a job straight after school. To what extent do you agree or disagree with this statement?"
+                </div>
+                
+                <strong style="color: #0066cc;">✓ Yếu tố Khách quan:</strong><br>
+                • <strong>Giáo dục:</strong> Chất lượng đào tạo, bằng cấp, kỹ năng chuyên môn<br>
+                • <strong>Kinh tế:</strong> Thu nhập, chi phí học phí, cơ hội việc làm<br>
+                • <strong>Xã hội:</strong> Yêu cầu thị trường lao động, cạnh tranh việc làm<br><br>
+                
+                <strong style="color: #059669;">✓ Yếu tố Chủ quan:</strong><br>
+                • <strong>Cá nhân:</strong> Mục tiêu nghề nghiệp, đam mê, sở thích<br>
+                • <strong>Giá trị:</strong> Định nghĩa thành công cá nhân<br>
+                • <strong>Tâm lý:</strong> Động lực học tập, sự tự tin<br><br>
+                
+                <strong style="color: #d97706;">→ Ý tưởng:</strong> Bài viết có thể so sánh lợi ích kinh tế và kỹ năng từ đại học với kinh nghiệm thực tế từ làm việc sớm, kết hợp với mục tiêu và đam mê cá nhân.
+                
+                <hr style="margin: 20px 0; border: none; border-top: 2px dashed #fbbf24;">
+                
+                <!-- Example 2 -->
+                <div class="example-topic">
+                    <strong>Topic 2:</strong> "Some people think that parents should teach children how to be good members of society. Others, however, believe that school is the place to learn this. Discuss both these views and give your own opinion."
+                </div>
+                
+                <strong style="color: #0066cc;">✓ Yếu tố Khách quan:</strong><br>
+                • <strong>Giáo dục:</strong> Hệ thống giáo dục, chương trình đào tạo<br>
+                • <strong>Xã hội:</strong> Chuẩn mực xã hội, vai trò gia đình và trường học<br><br>
+                
+                <strong style="color: #059669;">✓ Yếu tố Chủ quan:</strong><br>
+                • <strong>Quan hệ:</strong> Gắn kết gia đình, ảnh hưởng của cha mẹ<br>
+                • <strong>Đạo đức:</strong> Giá trị đạo đức, trách nhiệm xã hội<br>
+                • <strong>Văn hóa:</strong> Truyền thống, phong tục gia đình<br><br>
+                
+                <strong style="color: #d97706;">→ Ý tưởng:</strong> Phân tích vai trò bổ sung của gia đình (giá trị nền tảng, tình cảm) và nhà trường (kiến thức xã hội có hệ thống, kỹ năng giao tiếp).
+                
+                <hr style="margin: 20px 0; border: none; border-top: 2px dashed #fbbf24;">
+                
+                <!-- Example 3 -->
+                <div class="example-topic">
+                    <strong>Topic 3:</strong> "In some countries, young people are encouraged to work or travel for a year between finishing high school and starting university studies. Discuss the advantages and disadvantages for young people who decide to do this."
+                </div>
+                
+                <strong style="color: #0066cc;">✓ Yếu tố Khách quan:</strong><br>
+                • <strong>Giáo dục:</strong> Tạm hoãn học đại học, trải nghiệm học tập thực tế<br>
+                • <strong>Kinh tế:</strong> Tiết kiệm chi phí, kiếm tiền, độc lập tài chính<br>
+                • <strong>Xã hội:</strong> Mở rộng mạng lưới quan hệ<br><br>
+                
+                <strong style="color: #059669;">✓ Yếu tố Chủ quan:</strong><br>
+                • <strong>Cá nhân:</strong> Trưởng thành, độc lập, khám phá bản thân<br>
+                • <strong>Tâm lý:</strong> Động lực học tập rõ ràng hơn, sự tự tin<br>
+                • <strong>Thẩm mỹ:</strong> Trải nghiệm văn hóa mới, mở rộng tầm nhìn<br><br>
+                
+                <strong style="color: #d97706;">→ Ý tưởng:</strong> Advantages (kinh nghiệm thực tế, trưởng thành, động lực rõ ràng) vs Disadvantages (mất thời gian, quên kiến thức, áp lực tài chính).
+                
+                <hr style="margin: 20px 0; border: none; border-top: 2px dashed #fbbf24;">
+                
+                <!-- Example 4 -->
+                <div class="example-topic">
+                    <strong>Topic 4:</strong> "In many countries, people are now living longer than ever before. What problems does this cause? What can be done to address these issues?"
+                </div>
+                
+                <strong style="color: #0066cc;">✓ Yếu tố Khách quan:</strong><br>
+                • <strong>Sức khỏe:</strong> Hệ thống y tế quá tải, chi phí chăm sóc cao<br>
+                • <strong>Kinh tế:</strong> Áp lực lương hưu, thiếu lao động trẻ<br>
+                • <strong>Xã hội:</strong> Thay đổi cấu trúc dân số, gánh nặng cho thế hệ trẻ<br>
+                • <strong>Chính trị:</strong> Chính sách phúc lợi xã hội, cải cách hưu trí<br><br>
+                
+                <strong style="color: #059669;">✓ Yếu tố Chủ quan:</strong><br>
+                • <strong>Quan hệ:</strong> Quan hệ gia đình nhiều thế hệ<br>
+                • <strong>Tâm lý:</strong> Cô đơn ở người già, lo lắng về tương lai<br>
+                • <strong>Giá trị:</strong> Trách nhiệm chăm sóc người già<br><br>
+                
+                <strong style="color: #d97706;">→ Ý tưởng:</strong> Problems (chi phí y tế, áp lực lương hưu, cô đơn) + Solutions (tăng tuổi nghỉ hưu, khuyến khích sinh đẻ, cải thiện dịch vụ chăm sóc người già).
+                
+                <hr style="margin: 20px 0; border: none; border-top: 2px dashed #fbbf24;">
+                
+                <!-- Example 5 -->
+                <div class="example-topic">
+                    <strong>Topic 5:</strong> "In many countries, children are becoming overweight and unhealthy. What are the reasons for this? What can be done to solve this problem?"
+                </div>
+                
+                <strong style="color: #0066cc;">✓ Yếu tố Khách quan:</strong><br>
+                • <strong>Sức khỏe:</strong> Tình trạng béo phì, bệnh tật liên quan<br>
+                • <strong>Kinh tế:</strong> Thực phẩm chế biến sẵn rẻ, chi phí y tế tăng<br>
+                • <strong>Công nghệ:</strong> Lối sống ít vận động, màn hình điện tử<br>
+                • <strong>Giáo dục:</strong> Thiếu giáo dục dinh dưỡng, thiếu thể dục<br><br>
+                
+                <strong style="color: #059669;">✓ Yếu tố Chủ quan:</strong><br>
+                • <strong>Cá nhân:</strong> Thói quen ăn uống, lối sống lười vận động<br>
+                • <strong>Quan hệ:</strong> Ảnh hưởng từ gia đình, áp lực bạn bè<br>
+                • <strong>Tâm lý:</strong> Căng thẳng, ăn uống cảm xúc<br><br>
+                
+                <strong style="color: #d97706;">→ Ý tưởng:</strong> Reasons (thức ăn nhanh, công nghệ, thiếu vận động, ảnh hưởng gia đình) + Solutions (giáo dục dinh dưỡng, tăng thể dục, hạn chế quảng cáo đồ ăn không lành mạnh).
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống MM</title>
+    <style>
+        /* Reset cơ bản */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: white;
+            width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            cursor: pointer;
+            padding: 40px 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+            color: #4a90e2;
+        }
+
+        .card p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #e1e8f0;
+            margin-top: 50px;
+        }
+
+        @media(max-width: 650px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>Hệ thống MM</header>
+
+    <div class="container">
+        <a href="MM_Topic.html" class="card" target="_blank">
+            <h2>Sơ đồ tư duy Topic</h2>
+            <p>Xem sơ đồ tư duy phân tích topic, hỗ trợ nắm ý chính nhanh chóng.</p>
+        </a>
+
+        <a href="MM_Writing.html" class="card" target="_blank">
+            <h2>Hướng dẫn Writing</h2>
+            <p>Chi tiết cách lên ý tưởng cho từng dạng bài viết, giúp viết hiệu quả hơn.</p>
+        </a>
+    </div>
+
+    <footer>
+        &copy; 2025 Hệ thống MM - Designed by Quỳnh Dao
+    </footer>
+
+</body>
+</html>
